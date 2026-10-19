@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gửi cậu • 20/10</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Quicksand:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Canvas Confetti for light heart/petal effect -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        peach: {
+                            50: '#fff9f8',
+                            100: '#fff0ed',
+                            200: '#ffdcd6',
+                            300: '#fca293',
+                            400: '#f8755f',
+                        },
+                        softCream: '#faf6f0',
+                        warmBrown: '#6e5a56',
+                    },
+                    fontFamily: {
+                        comfortaa: ['Comfortaa', 'cursive'],
+                        sans: ['Quicksand', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #faf6f0;
+            color: #5c4b48;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        /* Subtle ambient gradient animation */
+        .bg-gradient-soft {
+            background: linear-gradient(135deg, #faf6f0 0%, #fff0ed 50%, #fde8e5 100%);
+        }
+
+        /* Card transition effects */
+        .fade-in {
+            animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(12px) scale(0.98);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Gentle Floating Animation */
+        @keyframes floatGentle {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+
+        .animate-float {
+            animation: floatGentle 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-gradient-soft min-h-screen flex items-center justify-center p-4 selection:bg-peach-200 selection:text-warmBrown">
+
+    <!-- Main Container -->
+    <main class="w-full max-w-sm sm:max-w-md mx-auto relative z-10">
+
+        <!-- STEP 1: INITIAL MINIMAL ENVELOPE / PROMPT -->
+        <div id="step1"
+            class="fade-in bg-white/70 backdrop-blur-md rounded-3xl p-8 shadow-sm border border-peach-100 text-center space-y-6">
+
+            <!-- Icon -->
+            <div
+                class="w-16 h-16 mx-auto rounded-full bg-peach-100 flex items-center justify-center text-peach-400 text-2xl animate-float">
+                🌸
+            </div>
+
+            <!-- Short Teaser Text -->
+            <div class="space-y-2">
+                <p class="text-xs uppercase tracking-widest text-warmBrown/60 font-semibold">20 / 10</p>
+                <h1 class="text-xl font-bold font-comfortaa text-warmBrown">
+                    Có một lời nhắn gửi tới cậu...
+                </h1>
+                <p class="text-sm text-warmBrown/70 font-normal">
+                    Một chút dịu dàng nhỏ nhắn cho ngày hôm nay.
+                </p>
+            </div>
+
+            <!-- Open Letter Button -->
+            <button id="openBtn"
+                class="w-full py-3.5 px-6 rounded-2xl bg-peach-200 hover:bg-peach-300 text-warmBrown font-semibold text-sm transition-all duration-300 shadow-sm active:scale-95">
+                Mở ra xem nè ✨
+            </button>
+        </div>
+
+        <!-- STEP 2: LETTER CONTENT (Initially Hidden) -->
+        <div id="step2"
+            class="hidden bg-white/80 backdrop-blur-md rounded-3xl p-7 sm:p-8 shadow-sm border border-peach-100 space-y-6">
+
+            <!-- Letter Header -->
+            <div class="border-b border-peach-100 pb-5 text-center">
+                <!-- Khung chứa ảnh chú chuột -->
+                <div class="w-32 h-32 mx-auto mb-3 rounded-2xl overflow-hidden shadow-sm border-2 border-peach-200">
+                    <img src="mouse.png" alt="Chuột hamster ôm hoa" class="w-full h-full object-cover">
+                </div>
+
+                <!-- Tiêu đề -->
+                <h2 class="text-xl font-bold font-comfortaa text-warmBrown tracking-wide">Gửi cậu,</h2>
+            </div>
+
+            <!-- Letter Body -->
+            <div class="space-y-3 text-sm leading-relaxed text-warmBrown/80 font-medium">
+                <p>
+                    Chúc Ngọc một ngày 20/10 thật nhiều niềm vui, luôn xinh đẹp và giữ nụ cười dịu dàng như thế này nhé.
+                </p>
+                <p>
+                    Mấy ngày qua trò chuyện cùng Ngọc, tớ thấy ngày nào cũng nhẹ nhàng và dễ chịu hơn hẳn.
+                </p>
+                <div
+                    class="p-3.5 rounded-2xl bg-peach-50 border border-peach-100 text-warmBrown font-semibold text-center text-xs sm:text-sm">
+                    Chiều mai đi học tớ ghé gặp Ngọc một chút nhé, tớ có chút quà muốn gửi tận tay cho Ngọc 😳.
+                </div>
+            </div>
+
+            <!-- Question & Interactive Option Buttons -->
+            <div id="actionArea" class="space-y-3 pt-2">
+                <p class="text-center text-xs font-semibold text-warmBrown/70">
+                    Chiều mai hẹn gặp nhé? 🌷
+                </p>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <button
+                        class="response-btn py-3 px-4 rounded-xl bg-peach-100 hover:bg-peach-200 text-warmBrown font-semibold text-xs sm:text-sm transition-all duration-300 active:scale-95 text-center">
+                        Được nha 🌸
+                    </button>
+                    <button
+                        class="response-btn py-3 px-4 rounded-xl bg-peach-100 hover:bg-peach-200 text-warmBrown font-semibold text-xs sm:text-sm transition-all duration-300 active:scale-95 text-center">
+                        Hẹn chiều mai ✨
+                    </button>
+                </div>
+            </div>
+
+            <!-- Cute Thank You Response (Hidden initially) -->
+            <div id="thankYouMsg"
+                class="hidden text-center space-y-2 py-3 bg-peach-50 rounded-2xl border border-peach-100 fade-in">
+                <span class="text-xl">🥰</span>
+                <p class="text-sm font-bold text-warmBrown font-comfortaa">Hẹn cậu chiều mai nhé!</p>
+                <p class="text-xs text-warmBrown/70">Tớ sẽ đợi cậu sau giờ tan học nè.</p>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- JS Logic -->
+    <script>
+        const openBtn = document.getElementById('openBtn');
+        const step1 = document.getElementById('step1');
+        const step2 = document.getElementById('step2');
+        const responseBtns = document.querySelectorAll('.response-btn');
+        const actionArea = document.getElementById('actionArea');
+        const thankYouMsg = document.getElementById('thankYouMsg');
+
+        // Step 1 -> Step 2 transition
+        openBtn.addEventListener('click', () => {
+            step1.classList.add('hidden');
+            step2.classList.remove('hidden');
+            step2.classList.add('fade-in');
+
+            // Gentle confetti trigger on open
+            triggerSoftConfetti();
+        });
+
+        // Click interaction on answer buttons
+        responseBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                actionArea.classList.add('hidden');
+                thankYouMsg.classList.remove('hidden');
+
+                // Heart confetti explosion
+                triggerHeartConfetti();
+            });
+        });
+
+        // Soft petal/pastel confetti
+        function triggerSoftConfetti() {
+            confetti({
+                particleCount: 25,
+                spread: 60,
+                origin: { y: 0.7 },
+                colors: ['#ffdcd6', '#fca293', '#fff0ed']
+            });
+        }
+
+        // Heart confetti burst
+        function triggerHeartConfetti() {
+            const count = 200;
+            const defaults = {
+                origin: { y: 0.7 }
+            };
+
+            function fire(particleRatio, opts) {
+                confetti(Object.assign({}, defaults, opts, {
+                    particleCount: Math.floor(count * particleRatio)
+                }));
+            }
+
+            fire(0.25, {
+                spread: 26,
+                startVelocity: 55,
+                colors: ['#fca293', '#ffdcd6', '#f8755f']
+            });
+            fire(0.2, {
+                spread: 60,
+                colors: ['#ffdcd6', '#fff0ed']
+            });
+            fire(0.35, {
+                spread: 100,
+                decay: 0.91,
+                scalar: 0.8
+            });
+        }
+    </script>
+</body>
+
+</html>
